@@ -6,6 +6,9 @@ import hashlib
 
 
 def download_file(url, filename):
+    """
+    Download the target file and save it to the current directory
+    """
     target = url + filename
 
     with open(filename, 'wb') as f:
@@ -13,6 +16,9 @@ def download_file(url, filename):
 
 
 def get_md5(url, filename):
+    """
+    Download the md5sum file and return the md5 value
+    """
     download_file(url, filename)
     result = ''
     with open(filename) as f:
@@ -22,7 +28,9 @@ def get_md5(url, filename):
 
 
 def checksum(filename):
-    # Compares a file and a string
+    """
+    Given a file, return its md5 hash
+    """
     m = hashlib.md5()
     with open(filename, 'rb') as f:
         while True:
