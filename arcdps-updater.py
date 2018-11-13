@@ -46,7 +46,8 @@ def main():
     """
     1) Check if d3d9.dll exists locally
     2) Check if md5sum of d3d9.dll matches online md5sum
-    3) If local md5sum does not match, download online d3d9.dll
+    3) If d3d9.dll is not present or if local md5sum does not match,
+       download online d3d9.dll
     4) Verify md5sum
     """
 
@@ -55,16 +56,16 @@ def main():
     md5file = 'd3d9.dll.md5sum'
 
     md5 = get_md5(url, md5file)
-    d3d9_sum = checksum(d3d9)
 
-    if 'd3d9.dll' in os.listdir() and d3d9_sum == md5:
+    if 'd3d9.dll' in os.listdir() and checksum(d3d9) == md5:
         print("d3d9.dll is up to date.")
     else:
-        print("d3d9.dllis out of date.")
+        print("d3d9.dll is out of date.")
         download_file(url, d3d9)
-        d3d9_sum = checksum(d3d9)
-        if d3d9_sum == md5:
+        if checksum(d3d9) == md5:
             print("d3d9.dll successfully updated.")
+        else:
+            print("d3d9.dll was updated, but md5 comparison failed.")
 
 
 if __name__ == '__main__':
