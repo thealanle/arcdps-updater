@@ -81,8 +81,6 @@ def main():
                       'd3d9_arcdps_extras.dll')
         print("d3d9_arcdps_extras.dll successfully updated.\n")
 
-    time.sleep(2)
-
 
 if __name__ == '__main__':
     main()
