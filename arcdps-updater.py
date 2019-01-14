@@ -66,6 +66,21 @@ def main():
             print("d3d9.dll successfully updated.")
         else:
             print("d3d9.dll was updated, but md5 comparison failed.")
+            print("d3d9.dll was updated, but md5 comparison failed.\n")
+
+    if 'd3d9_arcdps_buildtemplates.dll' in cwd:
+        print("Build templates detected.")
+        download_file(url + 'buildtemplates/',
+                      'd3d9_arcdps_buildtemplates.dll')
+        print("d3d9_arcdps_buildtemplates.dll successfully updated.\n")
+
+    if 'd3d9_arcdps_extras.dll' in cwd:
+        print("arcdps extras detected.")
+        download_file(url + 'extras/',
+                      'd3d9_arcdps_extras.dll')
+        print("d3d9_arcdps_extras.dll successfully updated.\n")
+
+    time.sleep(2)
 
 
 if __name__ == '__main__':
