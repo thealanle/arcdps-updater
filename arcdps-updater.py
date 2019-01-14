@@ -3,6 +3,7 @@
 import requests
 import os
 import hashlib
+import time
 
 
 def download_file(url, filename):
@@ -54,18 +55,18 @@ def main():
     url = 'https://www.deltaconnected.com/arcdps/x64/'
     d3d9 = 'd3d9.dll'
     md5file = 'd3d9.dll.md5sum'
+    cwd = os.listdir()
 
     md5 = get_md5(url, md5file)
 
-    if 'd3d9.dll' in os.listdir() and checksum(d3d9) == md5:
-        print("d3d9.dll is up to date.")
+    if 'd3d9.dll' in cwd and checksum(d3d9) == md5:
+        print("d3d9.dll is up to date.\n")
     else:
         print("d3d9.dll is out of date.")
         download_file(url, d3d9)
         if checksum(d3d9) == md5:
-            print("d3d9.dll successfully updated.")
+            print("d3d9.dll successfully updated.\n")
         else:
-            print("d3d9.dll was updated, but md5 comparison failed.")
             print("d3d9.dll was updated, but md5 comparison failed.\n")
 
     if 'd3d9_arcdps_buildtemplates.dll' in cwd:
